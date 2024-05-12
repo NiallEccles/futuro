@@ -1,9 +1,13 @@
-import NxWelcome from './nx-welcome';
+import { DatePicker } from '@mantine/dates';
+import { useState } from 'react';
+import CreateEvent from './components/create-event/create-event';
 
 export function App() {
+  const [value, setValue] = useState<Date | null>(null);
   return (
     <div>
-      <NxWelcome title="futuro" />
+      <DatePicker allowDeselect value={value} onChange={setValue} />;
+      <CreateEvent/>
     </div>
   );
 }
