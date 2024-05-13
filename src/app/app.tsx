@@ -7,7 +7,7 @@ export function App() {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <div>
-      <MainNav />
+      <MainNav opened={opened} open={open} />
       <div className="px-5">
         <Button variant="filled" size="md" fullWidth onClick={() => opened ? close() : open()}>Create Event</Button>
       </div>
