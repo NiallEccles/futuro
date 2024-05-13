@@ -1,10 +1,8 @@
-import { useDisclosure } from '@mantine/hooks';
 import { Button, ColorInput, Drawer, Group, Space, TextInput } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 
-export function CreateEvent() {
-  const [opened, { open, close }] = useDisclosure(true);
+export function CreateEvent({ opened, open, close }: { opened: boolean, open: () => void, close: () => void }) {
 
   interface FormValues {
     title: string;
