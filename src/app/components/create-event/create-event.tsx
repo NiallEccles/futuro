@@ -14,13 +14,18 @@ export function CreateEvent({ opened, open, close }: { opened: boolean, open: ()
 
   const form = useForm<FormValues>({
     mode: 'uncontrolled',
+    validateInputOnChange: true,
     initialValues: {
       title: '',
       date: null,
       file: null,
       colour: '',
       termsOfService: false
-    }
+    },
+    validate: (values: FormValues) => ({
+      title: values.title.length === 0 ? 'Title is required' : null,
+      date: values.date === null ? 'Date is required' : null
+    })
   });
 
   return (
@@ -40,6 +45,7 @@ export function CreateEvent({ opened, open, close }: { opened: boolean, open: ()
         />
         <Space h="sm" />
         <DateInput
+          withAsterisk
           label="Date"
           size="md"
           key={form.key('date')}
