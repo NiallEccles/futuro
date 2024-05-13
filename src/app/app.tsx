@@ -4,14 +4,16 @@ import { useDisclosure } from '@mantine/hooks';
 import MainNav from './components/main-nav/main-nav';
 
 export function App() {
-  const [opened, { open, close }] = useDisclosure(false);
+  const [createEventOpen, { open: openCreateEvent, close: closeCreateEvent }] = useDisclosure(false);
   return (
     <div>
-      <MainNav opened={opened} open={open} />
+      <MainNav opened={createEventOpen} open={openCreateEvent} />
       <div className="px-5">
-        <Button variant="filled" size="md" fullWidth onClick={() => opened ? close() : open()}>Create Event</Button>
+        <Button variant="filled" size="md" fullWidth
+                onClick={() => createEventOpen ? closeCreateEvent() : openCreateEvent()}>Create
+          Event</Button>
       </div>
-      <CreateEvent opened={opened} open={open} close={close} />
+      <CreateEvent opened={createEventOpen} open={openCreateEvent} close={closeCreateEvent} />
     </div>
   );
 }
